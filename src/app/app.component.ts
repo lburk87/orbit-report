@@ -5,14 +5,13 @@ import { Satellite } from './satellite';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-
-
-
 })
+
 export class AppComponent {
   title = 'orbit-report';
   sourceList: Satellite[];
   displayList: Satellite[];
+
   search(searchTerm: string): void {
     let matchingSatellites: Satellite[] = [];
     searchTerm = searchTerm.toLowerCase();
@@ -30,9 +29,11 @@ export class AppComponent {
   constructor() {
     this.sourceList = [];
     let satellitesUrl = 'https://handlers.education.launchcode.org/static/satellites.json';
+    this.displayList = [];
  
     window.fetch(satellitesUrl).then(function(response) {
        response.json().then(function(data) {
+        
  
           let fetchedSatellites = data.satellites;
           // TODO: loop over satellites
@@ -42,9 +43,11 @@ export class AppComponent {
             let satObj = new Satellite(fetchedSatellites[i].name, fetchedSatellites[i].type, fetchedSatellites[i].launchDate, fetchedSatellites[i].orbitType, fetchedSatellites[i].operational);
             this.sourceList.push(satObj);
           }
- 
-       }.bind(this));
+          // make a copy of the sourceList to be shown to the user
+      this.displayList = this.sourceList.slice(0);
     }.bind(this));
+ }.bind(this));
+   
  
  }
 
