@@ -9,7 +9,7 @@
    </tr>
    <tr *ngFor = "let satellite of satellites">
        <td>{{satellite.name}}</td>
-       <td class = "warning" ngIf ="satellite.shouldShowWarning(); else noWarning">{{satellite.type}}</td>
+       <td class = "warning" *ngIf ="satellite.shouldShowWarning(); else noWarning">{{satellite.type}}</td>
        <ng-template #noWarning>{{satellite.type}}</ng-template>
        <td>{{satellite.operational}}</td>
        <td>{{satellite.orbitType}}</td>
