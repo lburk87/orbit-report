@@ -8,9 +8,9 @@
       <th>Launch Date</th>
    </tr>
    <tr *ngFor = "let satellite of satellites">
-       <td class>{{satellite.name}}</td>
+       <td>{{satellite.name}}</td>
        <td class = "warning" *ngIf ="satellite.shouldShowWarning(); else noWarning">{{satellite.type}}</td>
-       <ng-template #noWarning>{{satellite.type}}</ng-template>
+       <ng-template #noWarning><td>{{satellite.type}}</td></ng-template>
        <td>{{satellite.operational}}</td>
        <td>{{satellite.orbitType}}</td>
        <td>{{satellite.launchDate}}</td>
