@@ -1,14 +1,14 @@
 <h3>Orbit Report</h3>
 <table>
    <tr class="header-row">
-      <th class="sortable" (click) = "sort('name')">Name</th>
-      <th class="sortable" (click) = "sort('type')">Type</th>
+      <th class="sortable" (click)="sort('name')">Name</th>
+      <th class="sortable" (click)="sort('type')">Type</th>
       <th>Operational</th>
       <th>Orbit Type</th>
       <th>Launch Date</th>
    </tr>
    <tr *ngFor = "let satellite of satellites">
-       <td>{{satellite.name}}</td>
+       <td class>{{satellite.name}}</td>
        <td class = "warning" *ngIf ="satellite.shouldShowWarning(); else noWarning">{{satellite.type}}</td>
        <ng-template #noWarning>{{satellite.type}}</ng-template>
        <td>{{satellite.operational}}</td>
